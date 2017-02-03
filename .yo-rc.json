@@ -1,0 +1,12 @@
+{
+  "generator-arc-component": {
+    "author": "Bhargav Ponnapalli",
+    "email": "bhargavponnapalli.5@gmail.com",
+    "github_username": "bhargav175",
+    "appname": "arc-dropdown",
+    "confirm_generate_license": true,
+    "license": "MIT",
+    "description": "Accessible react dropdown",
+    "root_component_name": "ArcDropdown"
+  }
+}
