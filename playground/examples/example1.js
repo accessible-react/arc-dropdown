@@ -1,4 +1,4 @@
-import ArcDropdown, {ArcDropdownListItem} from '../../src';
+import Dropdown, {DropdownItem} from '../../src';
 import React from 'react';
 
 export default class Example1 extends React.Component{
@@ -15,12 +15,12 @@ export default class Example1 extends React.Component{
   render(){
     return <section className="container-fluid">
       <h2> Basic example</h2>
-      <ArcDropdown value={this.state.value} onChange={this.onChange}>
-        <ArcDropdownListItem text="Morning" value={0} />
-        <ArcDropdownListItem text="A long Afternoon" label="An afternoon" value={1} />
-        <ArcDropdownListItem text="Evening" value={2} />
-        <ArcDropdownListItem text="Night" value={3} />
-      </ArcDropdown>
+      <Dropdown value={this.state.value} onChange={this.onChange}>
+        <DropdownItem text="Morning" value={0} />
+        <DropdownItem text="A long Afternoon" label="An afternoon" value={1} />
+        <DropdownItem text="Evening" value={2} />
+        <DropdownItem text="Night" value={3} />
+      </Dropdown>
     </section>;
   }
 }

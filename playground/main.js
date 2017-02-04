@@ -10,7 +10,7 @@ class Main extends React.Component{
   render(){
     return <div className="container-fluid" style={{paddingTop : 100,paddingBottom : 300}}>
         <div className="jumbotron">
-        <h1>ArcDropdown</h1>
+        <h1>Dropdown</h1>
         <h4> Accessible React Dropdown </h4>
         </div>
         <div style={{marginTop:100}}>

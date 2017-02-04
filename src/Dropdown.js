@@ -2,12 +2,11 @@ import React, {PropTypes,Component} from 'react';
 import {findDOMNode} from 'react-dom';
 import classnames from 'classnames';
 import {arcDropdownStyles, arcDropdownListStyles, arcDropdownSelectStyles} from './styles';
-import ArcDropdownListItem from './ArcDropdownListItem';
 import keycode from 'keycode';
 import * as KEY_CODES_NAMES from './keycodenames';
 const KEYNAMES =[KEY_CODES_NAMES.ENTER,KEY_CODES_NAMES.ESC, KEY_CODES_NAMES.UP, KEY_CODES_NAMES.DOWN, KEY_CODES_NAMES.SPACE];
 
-export default class ArcDropdown extends Component{
+export default class Dropdown extends Component{
   static count = 0;
   constructor(props){
     super(props);
@@ -15,7 +14,7 @@ export default class ArcDropdown extends Component{
       isOpen : false,
       focusChildIndex : -1
     };
-    this.id = `arcDropdown${++this.constructor.count}`;
+    this.id = `Dropdown${++this.constructor.count}`;
   }
   toggle=()=>{
     const { state : {isOpen}, open,close} = this;
@@ -191,7 +190,7 @@ export default class ArcDropdown extends Component{
   }
 }
 
-ArcDropdown.defaultProps = {
+Dropdown.defaultProps = {
   className : '',
   placeHolderText : 'Select a value',
   dropdownSelectClassname : '',
@@ -201,7 +200,7 @@ ArcDropdown.defaultProps = {
   dropdownListStyle : {}
 };
 
-ArcDropdown.propTypes = {
+Dropdown.propTypes = {
   value: PropTypes.any.isRequired,
   placeHolderText : PropTypes.string,
   children : PropTypes.any.isRequired,

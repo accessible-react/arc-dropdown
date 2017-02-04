@@ -1,5 +1,4 @@
-import ArcDropdown from './ArcDropdown';
-import ArcDropdownListItem from './ArcDropdownListItem';
-export {ArcDropdownListItem};
-export {ArcDropdown};
-export default ArcDropdown;
+import Dropdown from './Dropdown';
+import DropdownItem from './DropdownItem';
+export {Dropdown, DropdownItem};
+export default Dropdown;

@@ -1,4 +1,4 @@
-import ArcDropdown, {ArcDropdownListItem} from '../../dist';
+import Dropdown, {DropdownItem} from '../../dist';
 import React from 'react';
 
 const options = [{
@@ -23,7 +23,7 @@ const options = [{
   text : `Option Four`,
 }];
 
-export default class Example2 extends React.Component{
+export default class Example3 extends React.Component{
   constructor(props){
     super(props);
     this.state = {
@@ -36,9 +36,9 @@ export default class Example2 extends React.Component{
   render(){
     return <section className="container-fluid">
         <h2>Example with custom jsx</h2>
-        <ArcDropdown value={this.state.value} onChange={this.onChange}>
-          {options.map((option,index)=><ArcDropdownListItem key={index} value={index} label={option.label} text={option.text} />)}
-        </ArcDropdown>
+        <Dropdown value={this.state.value} onChange={this.onChange}>
+          {options.map((option,index)=><DropdownItem key={index} value={index} label={option.label} text={option.text} />)}
+        </Dropdown>
     </section>;
   }
 }

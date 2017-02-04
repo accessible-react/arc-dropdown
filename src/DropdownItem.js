@@ -5,7 +5,7 @@ import keycode from 'keycode';
 import {arcDropdownListItemStyles, arcDropdownSelectedListItemStyles, arcDropdownFocusedListItemStyles} from './styles';
 import * as KEY_CODES_NAMES from './keycodenames';
 
-export default class ArcDropdownListItem extends Component{
+export default class DropdownItem extends Component{
 
     componentDidMount=()=>{
       this.focusIfNeeded();
@@ -41,7 +41,7 @@ export default class ArcDropdownListItem extends Component{
 
 
 
-ArcDropdownListItem.propTypes = {
+DropdownItem.propTypes = {
   value : PropTypes.any.isRequired,
   label : PropTypes.any,
   style : PropTypes.object,
@@ -52,7 +52,7 @@ ArcDropdownListItem.propTypes = {
   focused : PropTypes.bool
 };
 
-ArcDropdownListItem.defaultProps = {
+DropdownItem.defaultProps = {
   onClick : ()=>{},
   onKeyDown : ()=>{}
 };
