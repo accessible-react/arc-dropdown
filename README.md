@@ -1,6 +1,6 @@
 # arc-dropdown
 
-<img src="https://travis-ci.org/bhargav175/arc-dropdown.svg?branch=master" alt="build status"/>
+<img src="https://travis-ci.org/accessible-react/arc-dropdown.svg?branch=master" alt="build status"/>
 
 ### Accessible react dropdown
 
