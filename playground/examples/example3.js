@@ -1,4 +1,4 @@
-import ArcDropdown, {ArcDropdownListItem} from '../../src';
+import ArcDropdown, {ArcDropdownListItem} from '../../dist';
 import React from 'react';
 
 const options = [{
