@@ -12,7 +12,7 @@ export default class Example1 extends React.Component{
     this.setState({value});
   }
   render(){
-    return <section className="container">
+    return <section className="container-fluid">
       <h2> Basic example</h2>
       <ArcDropdown value={this.state.value} onChange={this.onChange}>
         <ArcDropdownListItem text="Morning" value={0} />

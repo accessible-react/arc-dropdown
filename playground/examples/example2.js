@@ -12,8 +12,8 @@ export default class Example2 extends React.Component{
     this.setState({value});
   }
   render(){
-    return <section className="container">
-        <h2>Example with Label strings</h2>
+    return <section className="container-fluid">
+        <h2>Example with labels</h2>
         <ArcDropdown value={this.state.value} onChange={this.onChange}>
           <ArcDropdownListItem label="Morning" text="9AM - 12PM" value={0} />
           <ArcDropdownListItem label="A long Afternoon" text="12PM-4PM" value={1} />

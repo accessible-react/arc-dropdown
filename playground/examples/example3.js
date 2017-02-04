@@ -34,7 +34,7 @@ export default class Example2 extends React.Component{
     this.setState({value});
   }
   render(){
-    return <section className="container">
+    return <section className="container-fluid">
         <h2>Example with custom jsx</h2>
         <ArcDropdown value={this.state.value} onChange={this.onChange}>
           {options.map((option,index)=><ArcDropdownListItem key={index} value={index} label={option.label} text={option.text} />)}
