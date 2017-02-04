@@ -9,6 +9,7 @@
 .arc-dropdown-list{
   position : absolute;
   top : 100%;
+  z-index : 1;
   display : inline-block;
   border : 1px solid #e5e5e5;
   padding: 2px;

@@ -10,7 +10,7 @@ var DEVELOPMENT = process.env.NODE_ENV === 'development';
 
 var config = {
   entry :  {
-    bundle :  ['babel-polyfill'],
+    bundle :  [],
   },
   output: {
     chunkFilename: '[name].js',
@@ -63,6 +63,7 @@ if(DEVELOPMENT){
         'NODE_ENV': '"development"'
       }
     }),
+    new webpack.NoErrorsPlugin(),
     new HtmlWebpackPlugin({
       title: 'arc-dropdown',
       template : path.resolve(devPath,'template.html'),
@@ -73,19 +74,35 @@ if(DEVELOPMENT){
   config.entry.bundle.push(path.resolve(devPath,'main.js'));
 
 } else {
-  config.module.rules[1].loader =
-    ExtractTextWebpackPlugin.extract({
-      fallbackLoader: "style-loader",
-      loader: "css-loader!sass-loader"
-    });
+    config.module.rules[1].use = ['style-loader','css-loader','sass-loader'];
 
+    // ExtractTextWebpackPlugin.extract({
+    //   fallbackLoader: "style-loader",
+    //   loader: "css-loader!sass-loader"
+    // });
+  config.externals= {
+    'react': {
+      root: 'React',
+      commonjs2: 'react',
+      commonjs: 'react',
+      amd: 'react'
+    },
+    'react-dom': {
+      root: 'ReactDOM',
+      commonjs2: 'react-dom',
+      commonjs: 'react-dom',
+      amd: 'react-dom'
+    }
+  };
   config.plugins.push(
-    new ExtractTextWebpackPlugin('style.css'),
+    //new ExtractTextWebpackPlugin('style.css'),
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': '"production"'
       }
-    })
+    }),
+    new webpack.NoErrorsPlugin(),
+    new webpack.optimize.UglifyJsPlugin()
   );
   config.entry.bundle.push(path.resolve(assetsPath,'index.js'));
 

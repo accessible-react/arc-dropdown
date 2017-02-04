@@ -7,14 +7,12 @@
     "clean": "rimraf dist",
     "start": "NODE_ENV=development webpack-dev-server --hot --history-api-fallback",
     "build": "NODE_ENV=production npm run clean && webpack",
-    "test" : "ava"
+    "test": "ava"
   },
   "author": "Bhargav Ponnapalli",
   "license": "MIT",
   "dependencies": {
-    "classnames": "^2.2.5",
-    "react": "^15.3.2",
-    "react-dom": "^15.3.2"
+    "classnames": "^2.2.5"
   },
   "devDependencies": {
     "ava": "^0.17.0",
@@ -42,7 +40,8 @@
     "style-loader": "^0.13.1",
     "webpack": "2.1.0-beta.27",
     "webpack-dev-server": "2.1.0-beta.11"
-  },"ava": {
+  },
+  "ava": {
     "source": [
       "**/*.{js,jsx}",
       "!dist/**/*"
@@ -52,5 +51,9 @@
     ],
     "verbose": true,
     "babel": "inherit"
+  },
+  "peerDependencies": {
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
   }
 }
