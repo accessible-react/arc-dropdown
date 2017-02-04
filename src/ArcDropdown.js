@@ -1,8 +1,10 @@
 import React, {PropTypes,Component} from 'react';
 import {findDOMNode} from 'react-dom';
 import classnames from 'classnames';
-import './style.scss';
+import {arcDropdownStyles, arcDropdownListStyles, arcDropdownSelectStyles} from './styles';
 import ArcDropdownListItem from './ArcDropdownListItem';
+
+
 
 export default class ArcDropdown extends Component{
   constructor(props){
@@ -18,9 +20,10 @@ export default class ArcDropdown extends Component{
     onChange(...args);
   }
   getChildContext=()=>{
-    const {onChange} = this.props;
+    const {value} = this.props;
     return {
-      onArcDropdownItemClick: this.handleChange
+      onArcDropdownItemClick: this.handleChange,
+      selectedValue : value
     };
   }
 
@@ -81,7 +84,7 @@ export default class ArcDropdown extends Component{
     const {children, dropdownListClassname, dropdownListStyle} = this.props;
     const {isOpen} = this.state;
     const filteredChildren = this.getFilteredChildren(children);
-    return isOpen ? ( <div className={classnames('arc-dropdown-list',dropdownListClassname)} style={dropdownListStyle}  aria-hidden={!isOpen} id={this.id}>
+    return isOpen ? ( <div className={classnames('arc-dropdown-list',dropdownListClassname)} style={Object.assign({},arcDropdownListStyles,dropdownListStyle)}  aria-hidden={!isOpen} id={this.id}>
        {filteredChildren}
     </div>) : null;
   }
@@ -105,8 +108,8 @@ export default class ArcDropdown extends Component{
         displayValue = child.props.label || child.props.text;
       }
     });
-    return <div className={classnames('arc-dropdown',className)} style={style} ref="area">
-    <div className={classnames('arc-dropdown-select',dropdownSelectClassname)} style={dropdownSelectStyle} aria-expanded={isOpen} tabIndex="0" onClick={this.toggle} onKeyDown={this.onKeyDown} aria-controls={`${this.id}`}>
+    return <div className={classnames('arc-dropdown',className)} style={Object.assign({},arcDropdownStyles,style)} ref="area">
+    <div className={classnames('arc-dropdown-select',dropdownSelectClassname)} style={Object.assign({},arcDropdownSelectStyles,dropdownSelectStyle)} aria-expanded={isOpen} tabIndex="0" onClick={this.toggle} onKeyDown={this.onKeyDown} aria-controls={`${this.id}`}>
       {displayValue}
     </div>
     {this.renderChildren()}
@@ -124,7 +127,8 @@ ArcDropdown.defaultProps = {
   dropdownListStyle : {}
 };
 ArcDropdown.childContextTypes = {
-  onArcDropdownItemClick : PropTypes.func
+  onArcDropdownItemClick : PropTypes.func,
+  selectedValue : PropTypes.any
 };
 ArcDropdown.propTypes = {
   value: PropTypes.any.isRequired,
