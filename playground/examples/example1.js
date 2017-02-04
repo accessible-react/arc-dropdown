@@ -8,7 +8,8 @@ export default class Example1 extends React.Component{
       value : -1
     };
   }
-  onChange=(event,value)=>{
+  onChange=(event,value,child,index)=>{
+    console.log(child,index);
     this.setState({value});
   }
   render(){

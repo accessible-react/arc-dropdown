@@ -2,24 +2,24 @@ import ArcDropdown, {ArcDropdownListItem} from '../../src';
 import React from 'react';
 
 const options = [{
-  label : <div>
+  label : <span>
     <b> <span className='glyphicon glyphicon-play-circle'></span>  Option One </b>
-  </div>,
+  </span>,
   text : `Option One`,
 },{
-  label : <div>
+  label : <span>
     <b> <span className='glyphicon glyphicon-file'></span>  Option Two </b>
-  </div>,
+  </span>,
   text : `Option Two`,
 },{
-  label : <div>
+  label : <span>
     <b> <span className='glyphicon glyphicon-volume-up'></span>  Option Three </b>
-  </div>,
+  </span>,
   text : `Option Three`,
 },{
-  label : <div>
+  label : <span>
     <b> <span className='glyphicon glyphicon-repeat'></span>  Option Four </b>
-  </div>,
+  </span>,
   text : `Option Four`,
 }];
 

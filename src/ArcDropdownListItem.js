@@ -1,32 +1,58 @@
 import React, {PropTypes,Component} from 'react';
 import {findDOMNode} from 'react-dom';
 import classnames from 'classnames';
-import {arcDropdownListItemStyles, arcDropdownSelectedListItemStyles} from './styles';
+import keycode from 'keycode';
+import {arcDropdownListItemStyles, arcDropdownSelectedListItemStyles, arcDropdownFocusedListItemStyles} from './styles';
+import * as KEY_CODES_NAMES from './keycodenames';
 
 export default class ArcDropdownListItem extends Component{
-    handleClick=(e)=>{
-      const {value} = this.props;
-      const {onArcDropdownItemClick} = this.context;
-      typeof onArcDropdownItemClick === 'function' ? onArcDropdownItemClick(e,value) : null;
+
+    componentDidMount=()=>{
+      this.focusIfNeeded();
     }
+    componentDidUpdate=()=>{
+      this.focusIfNeeded();
+    }
+    focusIfNeeded=()=>{
+      if(this.props.focused){
+        this.node.focus();
+      }
+    }
+    mergeStyles=()=>{
+      const styles = {};
+      const {selected,focused, style : propStyles} = this.props;
+      Object.assign(styles,arcDropdownListItemStyles);
+      if(selected){
+        Object.assign(styles,arcDropdownSelectedListItemStyles);
+      }
+      if(focused){
+        Object.assign(styles,arcDropdownFocusedListItemStyles);
+      }
+      Object.assign(styles,propStyles);
+      return styles;
+    }
+
     render(){
-      const {text,label, style : propStyles, value} = this.props;
-      const {selectedValue} = this.context;
-      const isSelected = selectedValue === value;
-      const style = isSelected ? Object.assign({},arcDropdownListItemStyles, arcDropdownSelectedListItemStyles , propStyles) : Object.assign({},arcDropdownListItemStyles, propStyles);
-      console.log(selectedValue,value,isSelected, style);
-      return <div className="arc-dropdown-list-item" style={style} onClick={this.handleClick} >{label || text}</div>;
+      const {text,label,onClick} = this.props;
+      const style = this.mergeStyles();
+      return <li ref={node=>this.node=node}  className="arc-dropdown-list-item" style={style} onClick={onClick} onKeyDown={this.onKeyDown} role="menu-item">{label || text}</li>;
     }
 }
 
-ArcDropdownListItem.contextTypes = {
-  onArcDropdownItemClick : PropTypes.func,
-  selectedValue : PropTypes.any
-};
+
 
 ArcDropdownListItem.propTypes = {
   value : PropTypes.any.isRequired,
   label : PropTypes.any,
   style : PropTypes.object,
   text : PropTypes.any.isRequired,
+  onClick : PropTypes.func.isRequired,
+  onKeyDown : PropTypes.func.isRequired,
+  selected : PropTypes.bool,
+  focused : PropTypes.bool
+};
+
+ArcDropdownListItem.defaultProps = {
+  onClick : ()=>{},
+  onKeyDown : ()=>{}
 };

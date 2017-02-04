@@ -12,7 +12,8 @@
   "author": "Bhargav Ponnapalli",
   "license": "MIT",
   "dependencies": {
-    "classnames": "^2.2.5"
+    "classnames": "^2.2.5",
+    "keycode": "^2.1.8"
   },
   "devDependencies": {
     "ava": "^0.17.0",

@@ -8,7 +8,7 @@ if(module.hot){
 
 class Main extends React.Component{
   render(){
-    return <div className="container-fluid" style={{marginTop : 100,marginBottom : 300}}>
+    return <div className="container-fluid" style={{paddingTop : 100,paddingBottom : 300}}>
         <div className="jumbotron">
         <h1>ArcDropdown</h1>
         <h4> Accessible React Dropdown </h4>
