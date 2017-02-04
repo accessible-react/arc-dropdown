@@ -1,6 +1,6 @@
 {
   "name": "arc-dropdown",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Accessible react dropdown",
   "main": "dist/bundle.js",
   "scripts": {
