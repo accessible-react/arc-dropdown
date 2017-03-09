@@ -1,6 +1,5 @@
 import React, {PropTypes,Component} from 'react';
-import {findDOMNode} from 'react-dom';
-import classnames from 'classnames';
+import cx from 'classnames';
 import {arcDropdownStyles, arcDropdownListStyles, arcDropdownSelectStyles} from './styles';
 import keycode from 'keycode';
 import * as KEY_CODES_NAMES from './keycodenames';
@@ -151,7 +150,7 @@ export default class Dropdown extends Component{
     const {isOpen, focusChildIndex} = this.state;
     const filteredChildren = this.getFilteredChildren(children);
     const displayStyle = isOpen ? {display : 'block'} : {display : 'none'};
-    return ( <ul className={classnames('arc-dropdown-list',dropdownListClassname)} style={Object.assign({},arcDropdownListStyles,dropdownListStyle,displayStyle)}  aria-hidden={!isOpen} aria-labelledby={this.id} role="menu">
+    return ( <ul className={cx('arc-dropdown-list',dropdownListClassname)} style={Object.assign({},arcDropdownListStyles,dropdownListStyle,displayStyle)}  aria-hidden={!isOpen} aria-expanded={isOpen} aria-labelledby={this.id} role="menu">
        {React.Children.map(filteredChildren,(child,index)=>this.cloneChild(child,index,focusChildIndex===index, value ))}
     </ul>);
   }
@@ -173,10 +172,10 @@ export default class Dropdown extends Component{
         displayValue = child.props.label || child.props.text;
       }
     });
-    return <div ref={node=>this.node=node} className={classnames('arc-dropdown',className)} style={Object.assign({},arcDropdownStyles,style)} >
+    return <div ref={node=>this.node=node} className={cx('arc-dropdown',className)} style={Object.assign({},arcDropdownStyles,style)} >
             <button
                 type="button"
-                className={classnames('arc-dropdown-select',dropdownSelectClassname)}
+                className={cx('arc-dropdown-select',dropdownSelectClassname)}
                 style={Object.assign({},arcDropdownSelectStyles,dropdownSelectStyle)}
                 aria-haspopup="true"
                 aria-expanded={isOpen}

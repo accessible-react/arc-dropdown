@@ -1,5 +1,5 @@
 import test from 'ava';
-import Dropdown, {DropdownItem} from '../src';
+import Dropdown, {DropdownItem} from '../dist';
 import React from 'react'
 import { shallow, mount } from 'enzyme';
 

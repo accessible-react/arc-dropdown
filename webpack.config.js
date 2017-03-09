@@ -3,6 +3,7 @@ var webpack = require('webpack');
 var assetsPath = path.join(__dirname, 'src');
 var devPath = path.join(__dirname, 'playground');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var readPkg = require('read-pkg');
 
 var DEVELOPMENT = process.env.NODE_ENV === 'development';
 
@@ -10,6 +11,7 @@ var DEVELOPMENT = process.env.NODE_ENV === 'development';
 var config = {
   entry :  {
     bundle :  [],
+    vendor : ['react','react-dom']
   },
   output: {
     chunkFilename: '[name].js',
@@ -56,6 +58,7 @@ if(DEVELOPMENT){
         'NODE_ENV': '"development"'
       }
     }),
+		new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.bundle.js' }),
     new webpack.NoErrorsPlugin(),
     new HtmlWebpackPlugin({
       title: 'arc-dropdown',
@@ -82,6 +85,7 @@ if(DEVELOPMENT){
     }
   };
   config.plugins.push(
+		new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.bundle.js' }),
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': '"production"'
